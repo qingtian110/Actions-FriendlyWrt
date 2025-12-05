@@ -36,6 +36,10 @@ sed -i -e '/boardname=/r /tmp/appendtext.txt' friendlywrt/target/linux/rockchip/
 (cd friendlywrt && {
     git clone https://github.com/sbwml/openwrt_helloworld package/helloworld
     git clone https://github.com/sbwml/package_new_istore package/istore
+    rm -rf feeds/packages/lang/golang
+    git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+    rm -rf feeds/packages/lang/node
+    git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node -b packages-24.10
 })
 cat >> configs/rockchip/01-nanopi <<EOL
 CONFIG_PACKAGE_luci-app-passwall=y
